@@ -1,0 +1,36 @@
+{
+	"name": "adaptiveapi-transformer",
+	"version": "0.1.0",
+	"description": "Adaptive API Transformer provides templating and data-binding from JSON onto other JSON data",
+	"author": "AdaptiveCards",
+	"license": "MIT",
+	"main": "lib/adaptiveapi-transformer.js",
+	"types": "lib/adaptiveapi-transformer.d.ts",
+	"files": [
+		"lib",
+		"dist",
+		"src"
+	],
+	"scripts": {
+		"clean": "rimraf build lib dist",
+		"prebuild": "tsc",
+		"build": "webpack",
+		"watch": "webpack --watch",
+		"start": "webpack-dev-server --open",
+		"dts": "dts-generator --name adaptiveapi-transformer --project . --out dist/adaptiveapi-transformer.d.ts",
+		"lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
+		"release": "npm run build && webpack --mode=production && npm run dts"
+	},
+	"devDependencies": {
+		"rimraf": "^2.6.2",
+		"typescript": "^3.5.3",
+		"webpack": "^4.38.0",
+		"webpack-cli": "^3.3.6",
+		"webpack-concat-plugin": "^3.0.0",
+		"webpack-dev-server": "^3.7.2"
+	},
+	"dependencies": {
+		"adaptivecards-templating": "^0.1.1-alpha.0",
+		"ts-loader": "^6.2.1"
+	}
+}
